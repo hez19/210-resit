@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std; 
 
-struct Node{
+class Node{
+public:
 	int data;
-    Node*pre;
+        Node*pre;
 	Node*next;
 };
 //determine the deleted node location 
