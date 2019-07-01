@@ -46,11 +46,11 @@ void mergeSort(int a[],int l,int r){
 
 int main(){
 	int n;
-	cout<<"how many elements?";
+	cout<<"how many elements?"<<" ";
 	cin>>n;
 	//the number of array
     int a[n];
-    cout<<"Enter your elements:"<<endl;
+    cout<<"Enter your elements:"<<" "<<endl;
     //output the list you enter
     for(int i=0;i<n;i++){
   	cin>>a[i]; 
