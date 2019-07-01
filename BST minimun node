@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+struct Node{
+	int data;
+	Node*left;
+	Node*right; 
+};
+
+struct Node*newdata(int data){
+//create an empty tree allow to insert the new data 
+	Node*root = new Node;
+	root->data = data;
+	root->left = NULL;
+	root->right = NULL;
+
+}
+//Classification of the left and right nodes
+struct Node*insert(Node*root,int data){
+	//if the tree emtry,it will insert a new data
+	if(root == NULL)
+		root = newdata(data);
+		//
+		else{
+			if(data<=root->data)
+			if (root->left == NULL)
+            root->left = newdata(data);
+			else
+				root = insert(root->left, data);
+		else
+			if (root->right == NULL)
+				root->right = newdata(data);
+			else
+				root = insert(root->right, data);
+				
+        return root; 			
+	}
+}
+//If there is no left node, it mean the (return)root data is minimun node
+int findmin(Node*root){
+	while(root->left != NULL)
+	root = root->left;	 
+	return root->data;	
+}
+//insert new data into the root,and find the minimun 
+int main(){
+	struct Node*root=NULL;
+	root = insert(root,5);
+	insert(root,1);
+	insert(root,2);
+	insert(root,3);
+    insert(root,4);
+    cout<<"we find the minimun element is:"<<" "<<findmin(root)<<endl;
+	return 0; 
+}
