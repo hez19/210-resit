@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+struct Node{
+	int data;
+	Node*pre;
+	Node*next; 
+};
+//insert new node into the new array
+struct Node* insert(Node**head,int newdata){
+	struct Node*temp = new Node;
+	temp->data = newdata;
+	temp->pre = NULL;
+	temp->next = (*head);
+	//change the new head node
+	if((*head) !=NULL)
+	(*head)->pre = temp;	
+	(*head)= temp; 	
+	
+}
+
+void findmid(Node*head){
+	struct Node*mid = head;
+	//determine the parity of the list
+	int num =0;
+	while(head!=NULL){
+		if((num&1)==1)
+		mid = mid->next;
+		
+		num++;
+		head = head->next;
+	}
+	cout<<"we find the middle elements is:"<<mid->data<<endl;
+}
+//insert new data into the list and find the middle elements
+int main(){
+	Node*head = NULL;	
+	insert(&head,3);
+    insert(&head,7);
+	insert(&head,5);
+	insert(&head,1);  
+	findmid(head);
+	return 0;
+}
